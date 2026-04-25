@@ -19,7 +19,7 @@ export async function syncPendingAssessments(): Promise<{ synced: number, failed
     try {
       // Omit local-only metadata when syncing to cloud
       const { id, timestamp, ...cloudData } = assessment;
-      
+
       const { error } = await supabase
         .from('patient_assessments')
         .insert(cloudData);
